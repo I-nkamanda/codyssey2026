@@ -9,8 +9,8 @@
 ## 실행 환경
 - OS:MacOS Tahoe 26.3.1
 - Shell: zsh5.9
-- Docker:
-- Git:
+- Docker: 28.5.2 
+- Git: 2.50.1
 
 
 ## 수행 항목 체크 리스트
