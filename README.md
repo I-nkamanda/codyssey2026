@@ -7,8 +7,8 @@
 이를 통해 교육생은 앞으로도 Mac/Linux/Windows 등 다양한 환경에 처했더라도 개발 및 AI 작업을 일관적으로 수행하 수 잇게 될 것이다.
 
 ## 실행 환경
-MacOS / 
-
+MacOS Tahoe 26.3.1
+zsh5.9
 ## 수행 항목 체크 리스트
 
 ### Terminal 활용
