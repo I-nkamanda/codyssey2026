@@ -7,10 +7,11 @@
 > 'pwd' 라는 명령어를 사용해서 할 수 있다. <br>
 다음과 같은 예시를 보자.
 
-> jingeollee@Jingeolui-MacBookPro sunbal % pwd <br>  % 이후에 pwd를 입력한 모습이다.
+'''
+jingeollee@Jingeolui-MacBookPro sunbal % pwd <br>  # % 이후에 pwd를 입력한 모습이다.
 
-> /Users/jingeollee/Desktop/cody/sunbal
-
+/Users/jingeollee/Desktop/cody/sunbal
+'''
 
 
 
