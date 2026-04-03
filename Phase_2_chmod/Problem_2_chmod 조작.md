@@ -111,3 +111,30 @@ drwxr-xr-x   3 jingeollee  staff    96  4월  3 13:02 Phase_9_Git_and_Github_Set
 
 ```
 다음과 같이 sth.sh가 -rwxrwxrwx로 변경된 것을 확인할 수가 있다.
+
+이제는 directory를 만들어 보자.
+
+```
+jingeollee@Jingeolui-MacBookPro Phase_2_chmod % mkdir else     
+jingeollee@Jingeolui-MacBookPro Phase_2_chmod % ls -la
+total 16
+drwxr-xr-x   4 jingeollee  staff   128  4월  3 13:26 .
+drwxr-xr-x  17 jingeollee  staff   544  4월  3 13:09 ..
+drwxr-xr-x   2 jingeollee  staff    64  4월  3 13:26 else
+-rw-r--r--@  1 jingeollee  staff  5651  4월  3 13:13 Problem_2_chmod 조작.md
+
+```
+else 라는 폴더가 생성되었다. 권한은 drwxr-xr-x 이다. 8진수로 읽으면 755이다. 이제 이 폴더의 권한을 777로 변경해 보자.
+
+```
+jingeollee@Jingeolui-MacBookPro Phase_2_chmod % chmod 777 else
+jingeollee@Jingeolui-MacBookPro Phase_2_chmod % ls -la
+total 16
+drwxr-xr-x   4 jingeollee  staff   128  4월  3 13:26 .
+drwxr-xr-x  17 jingeollee  staff   544  4월  3 13:09 ..
+drwxrwxrwx   2 jingeollee  staff    64  4월  3 13:26 else
+-rw-r--r--@  1 jingeollee  staff  5651  4월  3 13:13 Problem_2_chmod 조작.md
+jingeollee@Jingeolui-MacBookPro Phase_2_chmod % 
+```
+
+else 폴더의 권한도 drwxrwxrwx로 변경된 것을 확인할 수가 있다.
