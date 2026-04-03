@@ -1,10 +1,9 @@
+# Problem 9: Git 설정 및 GitHub 연동
 
+## git clone
 
-
-
-Github에 연결을 해 보자.
-
-Git Clone을 사용해 보았다.
+>Git Clone을 사용해서 github에 있는 레포지토리를 내 맥북으로 가져올 수 있다. 
+> git clone [리포지토리 url.git] 형태로 사용한다.
 ```
 jingeollee@Jingeolui-MacBookPro sunbal % git clone https://github.com/I-nkamanda/codyssey2026/tree/maihttps://github.com/I-nkamanda/codyssey2026.git
 Cloning into 'codyssey2026'...
@@ -14,7 +13,7 @@ zsh: no such file or directory: https://github.com/I-nkamanda/codyssey2026.git
 
 ```
 실패. 명령어를 몇 번씩 잘못 입력했다.
-
+[트러블슈팅](/Problem_xx_트러블슈팅.md)
 
 ```
 jingeollee@Jingeolui-MacBookPro sunbal % git clone https://github.com/I-nkamanda/codyssey2026.git
