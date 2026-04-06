@@ -6,8 +6,8 @@
 
 ### [Docker image 확인]
 
-docker images 명령어를 사용해서 이 컴퓨터에 어떤 이미지가 있는지- 확인해볼 수 있다.
-
+docker images 명령어를 사용해서 이 컴퓨터에 어떤 이미지가 설치되어 있는지- 확인해볼 수 있다.
+다만 docker run을 사용했을 때 로컬 컴퓨터에 이미지가 없다면 자동으로 image를 pull해 오기도 한다.
 ```
 ersatzvitamin9579@c4r3s1 codyssey2026 % docker images
 REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
@@ -229,13 +229,3 @@ CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK
 ```
 비어있음을 확인할 수 있다.
 
-
-### [Docker 컨테이너 삭제]
-
-
-
-```
-
-
-
-```
