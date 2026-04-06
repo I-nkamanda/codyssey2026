@@ -18,7 +18,7 @@ mode는 8진수로 표현할 수 있다.
 
 이를 ls -la 등속으로 확인하자면 다음과 같은 형태를 보인다.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % ls -la 
 #를 입력했을 떄...
 
@@ -58,7 +58,7 @@ chmod 755 [file] 은 위에서 설명한 권한을 부여하는 명령어이다.
 
 우선 touch를 활용, sth.sh 라는 파일을 생성해 보았다.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % touch sth.sh
 jingeollee@Jingeolui-MacBookPro codyssey2026 % ls -la
 total 48
@@ -88,7 +88,7 @@ jingeollee@Jingeolui-MacBookPro codyssey2026 %
 
 이제 이 파일을 777로 변경해 보자.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % ls -la
 total 48
 drwxr-xr-x  17 jingeollee  staff   544  4월  3 13:09 .
@@ -114,7 +114,7 @@ drwxr-xr-x   3 jingeollee  staff    96  4월  3 13:02 Phase_9_Git_and_Github_Set
 
 이제는 directory를 만들어 보자.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro Phase_2_chmod % mkdir else     
 jingeollee@Jingeolui-MacBookPro Phase_2_chmod % ls -la
 total 16
@@ -126,7 +126,7 @@ drwxr-xr-x   2 jingeollee  staff    64  4월  3 13:26 else
 ```
 else 라는 폴더가 생성되었다. 권한은 drwxr-xr-x 이다. 8진수로 읽으면 755이다. 이제 이 폴더의 권한을 777로 변경해 보자.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro Phase_2_chmod % chmod 777 else
 jingeollee@Jingeolui-MacBookPro Phase_2_chmod % ls -la
 total 16

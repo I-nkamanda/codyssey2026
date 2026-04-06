@@ -4,7 +4,7 @@
 
 >Git Clone을 사용해서 github에 있는 레포지토리를 내 맥북으로 가져올 수 있다. 
 > git clone [리포지토리 url.git] 형태로 사용한다.
-```
+```bash
 jingeollee@Jingeolui-MacBookPro sunbal % git clone https://github.com/I-nkamanda/codyssey2026/tree/maihttps://github.com/I-nkamanda/codyssey2026.git
 Cloning into 'codyssey2026'...
 fatal: repository 'https://github.com/I-nkamanda/codyssey2026/tree/maihttps://github.com/I-nkamanda/codyssey2026.git/' not found
@@ -15,7 +15,7 @@ zsh: no such file or directory: https://github.com/I-nkamanda/codyssey2026.git
 실패. 명령어를 몇 번씩 잘못 입력했다.
 [트러블슈팅](/Problem_xx_트러블슈팅.md)
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro sunbal % git clone https://github.com/I-nkamanda/codyssey2026.git
 Cloning into 'codyssey2026'...
 remote: Enumerating objects: 87, done.
@@ -28,7 +28,7 @@ Resolving deltas: 100% (32/32), done.
 
 
 내용을 수정하고 나서 다시 git add . -> commit -> push를 해 보자.
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % git add .
 jingeollee@Jingeolui-MacBookPro codyssey2026 % git status
 On branch main
@@ -43,7 +43,7 @@ Changes to be committed:
 다음과 같이 수정된 파일들이 어떤 것들인지 달려준다.
 이제 git commit을 해 보겠다.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % git commit -m "chmod 항목 추가"
 [main 6788aeb] chmod 항목 추가
  Committer: Jingeol Lee <jingeollee@Jingeolui-MacBookPro.local>
@@ -65,7 +65,7 @@ After doing this, you may fix the identity used for this commit with:
 ```
 이제 shell에서 push를 해 보자.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % git push origin main
 Username for 'https://github.com': ㅁㅁㅁㅁㅁㅁㅁㅁ
 Password for 'https://ㅁㅁㅁㅁㅁㅁㅁ@github.com': 
@@ -96,7 +96,7 @@ jingeollee@Jingeolui-MacBookPro codyssey2026 %
 
 VSCode 등의 IDE를 활용,  GitHub 로그인을 미리 해놓았을 경우:
 
-```
+```bash
 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ@ㅁㅁㅁㅁㅁㅁ codyssey2026 % git commit -m "파일 및 폴더들 구조화 감행함"
 [main dc6e723] 파일 및 폴더들 구조화 감행함
  Committer: ㅁㅁㅁ <ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ@ㅁㅁㅁㅁㅁㅁ.ㅁㅁㅁㅁㅁㅁ.kr> #비식별화
@@ -118,7 +118,7 @@ After doing this, you may fix the identity used for this commit with:
 
 git config --list 결과는 다음과 같다.
 
-```
+```bash
 ersatzvitamin9579@c6r7s1 codyssey2026 % git config --list
 credential.helper=osxkeychain
 core.repositoryformatversion=0
@@ -135,7 +135,7 @@ branch.main.vscode-merge-base=origin/main
 ```
 
 개인 맥북에서는 다음과 같이 나온다.
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % git config --list
 credential.helper=osxkeychain
 init.defaultbranch=main

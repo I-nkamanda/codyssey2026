@@ -8,7 +8,7 @@
 > **pwd**는 print(출력하시오) working directory (현재 작업중인 디렉토리를) 라는 명령이다.
 다음과 같은 예시를 보자.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro sunbal % pwd
 # % 이후에 pwd를 입력해보면
 
@@ -29,7 +29,7 @@ jingeollee@Jingeolui-MacBookPro sunbal % pwd
 다음과 같은 예시를 보자.
 
 단순히 ls 를 입력했을 때:
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % ls  
 Phase_1_terminal			Phase_8_Docker Volume Continuity
 Phase_2_chmod				Phase_9_Git_and_Github_Settings
@@ -43,7 +43,7 @@ Phase_7_Port_Mapping
 
 ls -a 를 입력했을 때:
     숨어있는 .git이나 .DS_Store 등이 표시된다.
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % ls -a
 .					Phase_6_Dockerfile Custom Build
 ..					Phase_7_Port_Mapping
@@ -59,7 +59,7 @@ Phase_5_Container Workshop
 ls -la를 입력했을 때:
     숨어있는 .git이나 .DS_Store 등이 표시되고, 권한, 소유자, 그룹, 파일 크기, 최종 수정일, 파일명 등이 표시된다.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro codyssey2026 % ls -la
 total 48
 drwxr-xr-x  17 jingeollee  staff   544  4월  3 13:09 .
@@ -102,7 +102,7 @@ jingeollee@Jingeolui-MacBookPro codyssey2026 %
 > touch 명령어를 사용하여 빈 파일을 생성할 수 있다.
 > touch [option] [file] 형태로 사용한다.
 
-```
+```bash
 jingeollee@Jingeolui-MacBookPro tests % ls -la
 total 0
 drwxr-xr-x   2 jingeollee  staff   64  4월  3 14:49 .
@@ -124,8 +124,7 @@ drwxr-xr-x  18 jingeollee  staff  576  4월  3 14:49 ..
 >예를 들자면, cp sth.sh(파일 이름)) else(폴더 이름))
 
 > 실행 예시: sth.sh 폴더에 else 폴더를 만든 뒤 시작해보겠다.
-```
-
+```bash
 jingeollee@Jingeolui-MacBookPro tests % mkdir else
 jingeollee@Jingeolui-MacBookPro tests % ls -la
 total 0
@@ -136,7 +135,7 @@ drwxr-xr-x   2 jingeollee  staff   64  4월  3 15:42 else
 
 ```
 이제 sth.sh 파일을 else 폴더에 복사해 보았다.
-```
+```bash
 jingeollee@Jingeolui-MacBookPro tests % cp sth.sh else
 jingeollee@Jingeolui-MacBookPro tests % cd else
 jingeollee@Jingeolui-MacBookPro else % ls -la
@@ -146,9 +145,6 @@ drwxr-xr-x  4 jingeollee  staff  128  4월  3 15:42 ..
 -rw-r--r--  1 jingeollee  staff    0  4월  3 15:44 sth.sh
 jingeollee@Jingeolui-MacBookPro else % 
 
-
-
-
 ```
 
 
@@ -156,7 +152,7 @@ jingeollee@Jingeolui-MacBookPro else %
 터미널을 사용한 파일 이동을 위해서:
 > mv [option] [source] [destination] 형태로 사용한다.<br>
 #### 파일 옮기기 예시
-```
+```bash
 ersatzvitamin9579@c4r3s1 test % ls #첫 상황은 bil.sh 파일과 move 폴더가 있다.
 bil.sh	move
 ersatzvitamin9579@c4r3s1 test % mv bil.sh move #bil.sh 파일을 move 폴더로 옮겨보았다.
@@ -171,7 +167,7 @@ bil.sh #move 폴더 안에 있는 것을 확인할 수 있다.
 터미널을 사용, 파일 이름 변경을 위해서는 
 > mv [바꿀 파일] [바꿀 이름] 형태로 사용한다.<br>
 move 폴더 안에서 시작해보겠다.
-```
+```bash
 ersatzvitamin9579@c4r3s1 move % ls #폴더 내부를 들여다 보면
 bil.sh #bil.sh이 있다.
 ersatzvitamin9579@c4r3s1 move % mv bil.sh mil.sh #mv [바꿀 파일] [바꿀 이름]명령어를 입력!
@@ -186,7 +182,7 @@ mil.sh # mil.sh로 바뀜을 확인할 수 있다!
 > rm [option] [file] 형태로 사용한다.<br>
 > 실행 예시: move 폴더에 있는 mil.sh 파일을 삭제해 보겠다.
 
-```
+```bash
 ersatzvitamin9579@c4r3s1 move % ls #파일 내용 확인
 mil.sh
 ersatzvitamin9579@c4r3s1 move % rm mil.sh # mil.sh 삭제
@@ -204,7 +200,7 @@ ersatzvitamin9579@c4r3s1 move %
 > cat [파일명] 으로 파일 내용 확인 가능함.
 
 비어있는 move 폴더에서 확인해 보자.
-```
+```bash
 ersatzvitamin9579@c4r3s1 move % ls
 ersatzvitamin9579@c4r3s1 move % echo Hello World > test.txt # echo [내용] > [파일명]
 ersatzvitamin9579@c4r3s1 move % ls  #test.txt 가 생김을 확인
@@ -220,7 +216,7 @@ ersatzvitamin9579@c4r3s1 move %
 ### [빈 파일 생성]
 
 > touch [파일명] 명령어를 사용한다.
-```
+```bash
 ersatzvitamin9579@c4r3s1 move % ls                              
 test.txt
 ersatzvitamin9579@c4r3s1 move % touch tes.t #명령어를 사용해서 tes.t 라는 파일을 만들어 보자.
