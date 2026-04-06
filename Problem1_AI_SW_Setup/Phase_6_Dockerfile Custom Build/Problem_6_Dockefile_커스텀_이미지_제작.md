@@ -14,7 +14,32 @@
 ## A: nginx 활용 + index.html 교체하기 선택!
 
 ## Dockerfile
+```dockerfile
+FROM nginx:latest
+## 최신 nginx 이미지를 가져옴. 이미 web 서버가 설치되고 설정된 상태로 시작한다
 
+WORKDIR /usr/share/nginx/html
+## 정적 file이 저장될 경로 설정
+## Nginx는 이 디렉토리의 파일을 웹으로 제공함
+
+
+RUN rm -f usr/share/nginx/html/index.html
+## 원래 설치되는 정적 index.html을 삭제한다.
+## 커스텀 index 파일로 교체하기 위함.
+
+COPY index.html /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/nginx.conf
+## 파일 복사하기: HOST의 파일을 컨테이너로 복사한다.
+## 커스텀 HTML과 일정을 image에 포함한다.
+
+EXPOSE 80
+## 컨테이너의 80번 포트 노출. 실제로 열지는 않고 문서화 역할을 한다.
+
+
+CMD ["nginx", "-g", "daemon off;"] 
+## 컨테이너 시작 시 Nginx 실행 / 옵션으로 컨테이너가 종료되지 않도록 foreground에서 실행됨
+
+```
 
 ## 빌드 / 실행 명령 및 결과 로그 (Terminal 스크린샷 가능)
 
@@ -75,7 +100,13 @@ CONTAINER ID   IMAGE                 COMMAND                   CREATED          
 ```
 `docker ps` 명령어로 실행 중인 것을 확인할 수 있다..
 
-curl localhost:8000 명령어를 쓰면?
+## 포트 매핑 접속 성공 증거 (스크린샷 또는 로그)
+스크린샷을 첨부함.
+
+![스크린샷](localhost_scr.png/)
+
+
+curl localhost:8000 명령어를 쓰면? 로그를 볼 수 있다.
 ```bash
 ersatzvitamin9579@c4r3s1 Docker_practice_nginx % curl localhost:8080
 <!DOCTYPE html>
@@ -186,9 +217,5 @@ ersatzvitamin9579@c4r3s1 Docker_practice_nginx %
 ```
 와 같이 커스텀 이미지가 나오는 것을 확인할 수 있다.
 
-## 포트 매핑 접속 성공 증거 (스크린샷 또는 로그)
-로그는 확인했으므로 스크린샷을 첨부함.
-
-![스크린샷](localhost_scr.png/)
 
 
