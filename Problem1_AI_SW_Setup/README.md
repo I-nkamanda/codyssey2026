@@ -64,7 +64,9 @@
 ### Port
 
 [Port Mapping](./Phase_7_Port_Mapping/Problem_7_포트_매핑_접속_증거.md)
+![포트매핑1](/codyssey2026/Problem1_AI_SW_Setup/PortMapping_1.png)
 
+![포트매핑2](/codyssey2026/Problem1_AI_SW_Setup/PortMapping_2.png)
 
 ### Docker Volume 영속성
 
