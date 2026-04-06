@@ -153,38 +153,84 @@ jingeollee@Jingeolui-MacBookPro else %
 
 
 ### [이동/이름변경]
+터미널을 사용한 파일 이동을 위해서:
 > mv [option] [source] [destination] 형태로 사용한다.<br>
+#### 파일 옮기기 예시
+```
+ersatzvitamin9579@c4r3s1 test % ls #첫 상황은 bil.sh 파일과 move 폴더가 있다.
+bil.sh	move
+ersatzvitamin9579@c4r3s1 test % mv bil.sh move #bil.sh 파일을 move 폴더로 옮겨보았다.
+ersatzvitamin9579@c4r3s1 test % ls #다시 폴더 파일을 살펴보니
+move #bil.sh 파일이 사라졌다!
+ersatzvitamin9579@c4r3s1 test % cd move #move 폴더 안으로 들어가서
+ersatzvitamin9579@c4r3s1 move % ls  # 확인해 보면 
+bil.sh #move 폴더 안에 있는 것을 확인할 수 있다.
 
+```
+#### 파일 이름 바꾸기 예시
+터미널을 사용, 파일 이름 변경을 위해서는 
+> mv [바꿀 파일] [바꿀 이름] 형태로 사용한다.<br>
+move 폴더 안에서 시작해보겠다.
+```
+ersatzvitamin9579@c4r3s1 move % ls #폴더 내부를 들여다 보면
+bil.sh #bil.sh이 있다.
+ersatzvitamin9579@c4r3s1 move % mv bil.sh mil.sh #mv [바꿀 파일] [바꿀 이름]명령어를 입력!
+ersatzvitamin9579@c4r3s1 move % ls #다시 파일 내부를 보면
+mil.sh # mil.sh로 바뀜을 확인할 수 있다!
 
 ```
 
 
-```
 
 ### [삭제]
 > rm [option] [file] 형태로 사용한다.<br>
-> 실행 예시: else 폴더에 있는 sth.sh 파일을 삭제해 보겠다.
-
+> 실행 예시: move 폴더에 있는 mil.sh 파일을 삭제해 보겠다.
 
 ```
+ersatzvitamin9579@c4r3s1 move % ls #파일 내용 확인
+mil.sh
+ersatzvitamin9579@c4r3s1 move % rm mil.sh # mil.sh 삭제
+ersatzvitamin9579@c4r3s1 move % ls #파일 내용 확인 시 아무것도 안 나옴
+ersatzvitamin9579@c4r3s1 move % ls -la  #ls -la 명령어로 자세히 확인
+total 0 #파일 갯수 0. 폴더가 빈 것을 확인할 수 있음.
+drwxr-xr-x  2 ersatzvitamin9579  ersatzvitamin9579  64  4  6 15:51 .
+drwxr-xr-x  3 ersatzvitamin9579  ersatzvitamin9579  96  4  6 15:44 ..
+ersatzvitamin9579@c4r3s1 move % 
 
 ```
 
 
 ### [파일 내용 확인]
+> cat [파일명] 으로 파일 내용 확인 가능함.
+
+비어있는 move 폴더에서 확인해 보자.
 ```
-
-
+ersatzvitamin9579@c4r3s1 move % ls
+ersatzvitamin9579@c4r3s1 move % echo Hello World > test.txt # echo [내용] > [파일명]
+ersatzvitamin9579@c4r3s1 move % ls  #test.txt 가 생김을 확인
+test.txt
+ersatzvitamin9579@c4r3s1 move % cat test.txt #cat 명령어를 사용해 test.txt 내용을 불러오면
+Hello World #내용이 잘 출력됨을 확인할 수 있다!
+ersatzvitamin9579@c4r3s1 move % 
 
 ```
 
 
 
 ### [빈 파일 생성]
+
+> touch [파일명] 명령어를 사용한다.
 ```
-
-
-
+ersatzvitamin9579@c4r3s1 move % ls                              
+test.txt
+ersatzvitamin9579@c4r3s1 move % touch tes.t #명령어를 사용해서 tes.t 라는 파일을 만들어 보자.
+ersatzvitamin9579@c4r3s1 move % ls -la #체크해 보면....
+total 8
+drwxr-xr-x  4 ersatzvitamin9579  ersatzvitamin9579  128  4  6 15:58 .
+drwxr-xr-x  3 ersatzvitamin9579  ersatzvitamin9579   96  4  6 15:44 ..
+-rw-r--r--  1 ersatzvitamin9579  ersatzvitamin9579    0  4  6 15:58 tes.t #생성 완료!
+-rw-r--r--  1 ersatzvitamin9579  ersatzvitamin9579   12  4  6 15:53 test.txt
+ersatzvitamin9579@c4r3s1 move % 
 
 ```
 
