@@ -38,16 +38,16 @@
 
 
 ### 권한
-[권한](./Phase_2_chmod/Problem_2_chmod%20조작.md)
+[권한](./Phase_2_chmod/Problem_2_chmod_조작.md)
 
 
 ### Docker
 
-[Docker 설치](./Phase_3_Docker%20Install/Problem_3_Docker_설치_점검.md)
+[Docker 설치](./Phase_3_Docker_Install/Problem_3_Docker_설치_점검.md)
 
-[Docker 기초 명령어](./Phase_4_Docker%20basic%20command/Problem_4_docker_기본_운영_명령.md)
+[Docker 기초 명령어](./Phase_4_Docker_basic_command/Problem_4_docker_기본_운영_명령.md)
 
-[Container 기초](./Phase_5_Container%20Workshop/Problem_5_컨테이너_실행_실습.md)
+[Container 기초](./Phase_5_Container_Workshop/Problem_5_컨테이너_실행_실습.md)
 
 
 
@@ -55,7 +55,7 @@
 ### Dockerfile
 
 
-[커스텀 Dockerfile 빌드](./Phase_6_Dockerfile%20Custom%20Build/Problem_6_Dockefile_커스텀_이미지_제작.md)
+[커스텀 Dockerfile 빌드](./Phase_6_Dockerfile_Custom_Build/Problem_6_Dockefile_커스텀_이미지_제작.md)
 
 
 
@@ -64,13 +64,15 @@
 ### Port
 
 [Port Mapping](./Phase_7_Port_Mapping/Problem_7_포트_매핑_접속_증거.md)
-![포트매핑1](/codyssey2026/Problem1_AI_SW_Setup/PortMapping_1.png)
 
-![포트매핑2](/codyssey2026/Problem1_AI_SW_Setup/PortMapping_2.png)
+![포트매핑1](PortMapping_1.png)
+
+![포트매핑2](PortMapping_2.png)
+
 
 ### Docker Volume 영속성
 
-[Docker 볼륨 영속성](./Phase_8_Docker%20Volume%20Continuity/Problem_8_도커_볼륨_영속성_검증.md)
+[Docker 볼륨 영속성](./Phase_8_Docker_Volume_Continuity/Problem_8_도커_볼륨_영속성_검증.md)
 
 ### Git / Github Settings
 [깃과 깃허브 세팅](./Phase_9_Git_and_Github_Settings/Problem_9_Git_설정_Github_연동.md)
@@ -78,3 +80,6 @@
 ### 문제 풀이 중 일어난 일들
 [트러블_슈팅](./Problem_xx_트러블슈팅.md)
 
+
+
+[def]: /codyssey2026/Problem1_AI_SW_Setup/PortMapping_1.png
