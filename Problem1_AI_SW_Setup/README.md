@@ -20,11 +20,16 @@
 - [x] hello-world 실행
 - [x] Dockerfile 빌드 / 실행
 - [x] 포트 매핑 접속
-- [] 바인드 마운트 반영
-- [] 볼륨 영속성
+- [x] 바인드 마운트 반영
+- [x] 볼륨 영속성
 - [x] Git 설정 + VSCode GitHub 연동
 
-
+## 보너스 과제 체크 리스트
+- [x] Docker Compose 기초
+- [ ] Docker Compose 멀티 컨테이너
+- [x] Docker Compose 운영 명령어 및 루틴
+- [x] 환경 변수 활용
+- [ ] Github SSH 키 설정
 
 ### Terminal 활용
 [Terminal 명령어 실습](./Phase_1_terminal/Problem_1_terminal.md)
