@@ -1,0 +1,8 @@
+services:
+  web: # 서비스 이름
+    image: nginx:latest # ngnix이미지: 최신 버전 사용
+    container_name: compose-nginx # 컨테이너 이름
+    ports:
+      - "8080:80" # 포트 포워딩: 호스트 8080 -> 컨테이너 80
+    volumes:
+      - ./html:/usr/share/nginx/html # 볼륨 마운트: 호스트 ./html -> 컨테이너 /usr/share/nginx/html

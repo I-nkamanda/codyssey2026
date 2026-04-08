@@ -87,7 +87,7 @@ Status: Downloaded newer image for nginx:latest
 
 다음과 같이 스크린샷으로 확인할 수 있다.
 
-![포트매핑](/codyssey2026/Problem1_AI_SW_Setup/Phase_7_Port_Mapping/nginx_screenshot.png)
+![포트매핑](nginx_screenshot.png)
 
 
 바로 curl을 써서 내용을 확인해 보자.(로그 확인)

@@ -103,7 +103,7 @@ CONTAINER ID   IMAGE                 COMMAND                   CREATED          
 ## 포트 매핑 접속 성공 증거 (스크린샷 또는 로그)
 스크린샷을 첨부함.
 
-![스크린샷](localhost_scr.png/)
+![스크린샷](localhost_scr.png)
 
 
 curl localhost:8000 명령어를 쓰면? 로그를 볼 수 있다.
