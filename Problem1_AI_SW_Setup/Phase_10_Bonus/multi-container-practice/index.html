@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker Compose 실습 페이지</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 50px; background-color: #f4f4f9; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { color: #2496ed; } /* Docker 공식 색상 느낌 */
+        .status { color: #28a745; font-weight: bold; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Docker Compose 통신 테스트</h1>
+        <p>현재 이 페이지는 <strong>web-server</strong> 컨테이너에서 서빙되고 있습니다.</p>
+        <hr>
+        <h3>연결된 보조 서비스 정보:</h3>
+        <ul>
+            <li>서비스명: <code>cache-db</code></li>
+            <li>사용 이미지: <code>redis:latest</code></li>
+            <li>내부 통신 포트: <code>6379</code></li>
+        </ul>
+        <p class="status">✓ 컨테이너 간 네트워크(bridge) 연결 활성화됨</p>
+    </div>
+</body>
+</html>

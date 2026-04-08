@@ -202,11 +202,96 @@ ose down
 `docker compose`는 컨테이너를 어떻게 실행할지를 **파일에 적어놓고** 그 파일대로 실행하는 것이다.
 
 
-## 2. Docker Composes 멀티 컨테이너
+
+
+
+## 2. Docker Compose 멀티 컨테이너
 - 웹 서버 + (임의의 보조 서비스) 2개 이상을 Compose로 함께 실행하기
 
+Docker Compose에서 컨테이너를 여러 개를 한 번에 올리는 것이 목표다. nginx 웹서버와 cache-db로 쓸 redis를 한꺼번에 올려보겠다.
 
-학습 포인트: 컨테이너 간 네트워크 통신이 가능한 지 확인하기
+다음과 같이 docker-compose.yml을 준비한다.
+```yaml
+version: '3.8'
+
+services:
+  web-server:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+    networks:
+      - my-app-net
+
+  cache-db:
+    image: redis:latest
+    networks: # port 설정을 하지 않았으므로 외부에 노출되지 않는다.
+      - my-app-net #my-app-net을 통해서 nginx 와 통신한다.
+
+networks:
+  my-app-net: #이것이 네트워크 이름
+    driver: bridge #bridge 네트워크를 사용한다.
+
+  ```
+이 상황에서 `docker-compose up -d`를 입력하면
+
+```bash
+ersatzvitamin9579@c4r3s1 multi-container-practice % docker-compose up -d
+WARN[0000] /Users/ersatzvitamin9579/Desktop/codyssey/codyssey2026/Problem1_AI_SW_Setup/Phase_10_Bonus/multi-container-practice/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 8/8
+ ✔ cache-db Pulled                                                                                           6.7s 
+   ✔ 5435b2dcdf5c Pull complete                                                                              2.5s 
+   ✔ dbf833dfdfed Pull complete                                                                              2.6s 
+   ✔ 0d8ecf679ede Pull complete                                                                              2.7s 
+   ✔ e22d95bb4ed9 Pull complete                                                                              3.1s 
+   ✔ 387e0421c8da Pull complete                                                                              3.2s 
+   ✔ 4f4fb700ef54 Pull complete                                                                              3.3s 
+   ✔ edc4b8e535e8 Pull complete                                                                              3.4s 
+[+] Running 3/3
+ ✔ Network multi-container-practice_my-app-net      Created                                                  0.1s 
+ ✔ Container multi-container-practice-cache-db-1    Start...                                                 0.8s 
+ ✔ Container multi-container-practice-web-server-1  Sta...                                                   0.9s 
+
+```
+성공적으로 컨테이너가 돌아감을 확인할 수 있다.
+
+이제 브라우저에서 localhost:8080을 통해 확인해보면
+![브라우저 이미지](localhost-screenshot.png)
+
+
+
+Orbstack 상에서는 
+![멀티 컨테이너](multiple-containers.png)
+다음과 같이 나온다.
+
+여기서 curl을 통해서 cache-db로 핑을 보내면
+
+```bash
+ersatzvitamin9579@c4r3s1 multi-container-practice % docker-compose exec web-server curl http://cache-db:6379
+WARN[0000] /Users/ersatzvitamin9579/Desktop/codyssey/codyssey2026/Problem1_AI_SW_Setup/Phase_10_Bonus/multi-container-practice/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+curl: (52) Empty reply from server
+```
+다음과 같이 빈 답변이 **from server**로부터 왔다고 나온다. DNS와 연결 자체는 성공한 것이다.
+
+여기에다가 백엔드로 flask나 FastAPI 서버를 돌리고, 프론트엔드도 Vite 같은 걸 넣고, DB도 Postgres 같은 걸 연결해준다면? `docker compose up -d`명령어로 한 번에 돌아가는 웹 서비스가 스릉 하고 실행되는 것이다. 매번 `npm run dev` 누르고 `uvicorn main:app --reload`눌러가면서 port 맞추고 난리를 칠 필요가 없는 것이다.
+이것을
+> full-stack containerization
+이라고 한다.
+
+이제 container들을 꺼 주자.
+```bash
+ersatzvitamin9579@c4r3s1 multi-container-practice % docker compose down
+WARN[0000] /Users/ersatzvitamin9579/Desktop/codyssey/codyssey2026/Problem1_AI_SW_Setup/Phase_10_Bonus/multi-container-practice/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 3/3
+ ✔ Container multi-container-practice-web-server-1  Rem...                                                   0.4s 
+ ✔ Container multi-container-practice-cache-db-1    Remov...                                                 0.4s 
+ ✔ Network multi-container-practice_my-app-net      Removed                                                  0.1s 
+ersatzvitamin9579@c4r3s1 multi-container-practice % 
+
+```
+
+
 
 ## 3. Compose 운영 명령어 습득
 
