@@ -1,0 +1,35 @@
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# IDE 설정
+.vscode/
+.idea/
+
+# 의존성 폴더
+node_modules/
+
+# 빌드 결과물
+dist/
+build/
+
+# 보안 파일
+.env
+.flaskenvg
+
+# 파이썬 캐시
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상 환경
+venv/
+.venv/
+env/
+
+# 테스트 및 빌드
+.pytest_cache/
+.tox/
+build/
+dist/
+*.egg-info/
