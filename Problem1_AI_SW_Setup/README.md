@@ -1,3 +1,6 @@
+# 미션 1. AI/SW 개발 워크스테이션 구축
+
+
 # codyssey2026
 2026년도 코디세이 AI 올인원 과정을 하면서 활용할 레포지토리
 
@@ -7,10 +10,10 @@
 이를 통해 교육생은 앞으로도 Mac/Linux/Windows 등 다양한 환경에 처했더라도 개발 및 AI 작업을 일관적으로 수행할 수 있게 될 것이다.
 
 ## 실행 환경
-- OS:MacOS Tahoe 26.3.1
+- OS:MacOS Tahoe 26.3.1 / Sequoia 15.7.4
 - Shell: zsh5.9
 - Docker: 28.5.2 
-- Git: 2.50.1
+- Git: 2.50.1 / 2.53.0
 
 
 ## 수행 항목 체크 리스트
@@ -26,7 +29,7 @@
 
 ## 보너스 과제 체크 리스트
 - [x] Docker Compose 기초
-- [ ] Docker Compose 멀티 컨테이너
+- [x] Docker Compose 멀티 컨테이너
 - [x] Docker Compose 운영 명령어 및 루틴
 - [x] 환경 변수 활용
 - [ ] Github SSH 키 설정
