@@ -694,10 +694,11 @@ origin  https://github.com/I-nkamanda/codyssey2026.git (push)
 이제 레포지토리를 SSH로 바꿔보자.
 ```bash
 ersatzvitamin9579@c4r5s1 codyssey2026 % git remote set-url origin git@github.com:username/repo.git
+ # I-nkamanda/codyssey2026.git 로 바꿔줘서 입력했다. 여기서 삽질했다. 
 
 ersatzvitamin9579@c4r5s1 codyssey2026 % git remote -v
-origin  git@github.com:username/repo.git (fetch)
-origin  git@github.com:username/repo.git (push)
+origin  git@github.com:I-nkamanda/codyssey2026.git (fetch)
+origin  git@github.com:I-nkamanda/codyssey2026.git (push)
 ```
 이 명령어를 통해서 remote url을 HTTPS에서 SSH로 바꿀 수 있다.
 origin이 바뀌었음을 확인할 수 있다.
