@@ -616,6 +616,75 @@ ersatzvitamin9579@c4r5s1 ~ %
 
 - HTTPS 대신 SSH로 push가 가능하도록 키 등록 후 동작 확인하기
 
+우선 네이토에게 물어보니 나온 대답이:
+
+```bash
+# 이메일 주소는 본인의 GitHub 계정 이메일을 입력하세요.
+ssh-keygen -t ed25519 -C "your_email@example.com"
+#ed25519는 최신 보안 알고리즘이라고 한다.
+
+ersatzvitamin9579@c4r5s1 codyssey2026 % ssh-keygen -t ed25519 -C "ersatzvitamin@gmail.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/ersatzvitamin9579/.ssh/id_ed25519): 
+Enter passphrase for "/Users/ersatzvitamin9579/.ssh/id_ed25519" (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/ersatzvitamin9579/.ssh/id_ed25519
+Your public key has been saved in /Users/ersatzvitamin9579/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256: Lㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ ersatzvitamin@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|  대강            |
+|  난수 느낌을       |
+|  주는            |
+|  특수            |
+|  문자들의         |
+|  향연이           |
+|  랜덤하게         |
+|  펼쳐집니다        |
++--+-[SHA256]-----+
+```
+와 같이 암호화/복호화를 잔뜩 해야 할 것 같은 문자열들이 나온다.
+
+이제 생성된 /.ssh/id_ed25519.pub에 나온 공개키를 복사해야 한다.
+이를 위해서 
+```bash
+# macOS/Linux
+cat ~/.ssh/id_ed25519.pub
+#을 타이핑하면
+ssh-ed25519 AAAAㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ ersatzvitamin@gmail.com
+```
+와ㅏ 같이 게인 키가 나오는데 이것을 복사해서 github 홈페이지에 가서
+SSH and GPG keys => SSH keys => New SSH 키를 입력해서 붙여넣어야 한다.
+여기서 인증을 위해서 Github Mobile 을 써야 한다.
+인증이 완료된 것을 확인하였다.
+
+증거자료로 다음과 같은 스크린샷을 첨부한다.
+![SSH 키 등재](SSH_gaepo.png)
+
+SSH 키가 설정이 잘 되었는지 체크해보기 위해서 `ssh -T git@github.com` 명령어를 넣어보겠다.
+
+그러면 shell에서 다음과 같이 git의 fingerprint가 맞는지 확인을 시켜준다.
+```bash
+ersatzvitamin9579@c4r5s1 codyssey2026 % ssh -T git@github.com
+The authenticity of host 'github.com (20.200.245.247)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+```
+
+![GitHub의 SHA키](github_official_SHA256_key.png)
+
+
+```
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi I-nkamanda! You've successfully authenticated, but GitHub does not provide shell access.
+ersatzvitamin9579@c4r5s1 codyssey2026 % 
+
+```
+이렇게 SSH 인증을 완료했다.
+
+
 
 
 학습 포인트: 인증방식 차이와 보안 습관
