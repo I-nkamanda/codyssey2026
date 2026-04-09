@@ -1,0 +1,21 @@
+# docker-compose.yml
+services:
+  # 개발용 서버 설정
+  my-app-dev:
+    build: . # 현재 디렉토리의 Dockerfile을 사용해 이미지를 빌드
+    container_name: dev_server
+    ports:
+      - "8080:8000" # 호스트의 8080 포트를 컨테이너의 8000 포트와 연결
+    environment:
+      - PORT=8000        # 컨테이너 내부에서 앱이 8000번 포트를 사용하도록 설정
+      - NODE_ENV=development # 앱의 모드를 'development'로 설정
+
+  # 운영용 서버 설정 (같은 이미지, 다른 설정)
+  my-app-prod: 
+    build: . #역시 같은 Dockerfile을 사용, 이미지를 build한다.
+    container_name: prod_server #production 모드니까 프로덕션 서버로
+    ports:
+      - "9090:9000" # 호스트의 9090 포트를 컨테이너의 9000 포트와 연결
+    environment:
+      - PORT=9000        # 컨테이너 내부에서 앱이 9000번 포트를 사용하도록 설정
+      - NODE_ENV=production  # 앱의 모드를 'production'으로 설정

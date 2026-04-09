@@ -485,6 +485,130 @@ jingeollee@Jingeolui-MacBookPro my-compose-practice %
 
 - Dockerfile / Compose에서 환경변수 주입, 서버 포트/모드 바꿔보기
 
+```yaml
+services:
+  서비스이름:
+    image: 사용할이미지
+    container_name: 컨테이너이름
+    ports:
+      - "호스트포트:컨테이너포트"
+    volumes:
+      - 호스트경로:컨테이너경로
+    environment:
+      - 변수이름=값
+```
+이 구조를 응용해서 
+
+```yaml
+# docker-compose.yml
+services:
+  # 개발용 서버 설정
+  my-app-dev:
+    build: . # 현재 디렉토리의 Dockerfile을 사용해 이미지를 빌드
+    container_name: dev_server
+    ports:
+      - "8080:8000" # 호스트의 8080 포트를 컨테이너의 8000 포트와 연결
+    environment:
+      - PORT=8000        # 컨테이너 내부에서 앱이 8000번 포트를 사용하도록 설정
+      - NODE_ENV=development # 앱의 모드를 'development'로 설정
+
+  # 운영용 서버 설정 (같은 이미지, 다른 설정)
+  my-app-prod: 
+    build: . #역시 같은 Dockerfile을 사용, 이미지를 build한다.
+    container_name: prod_server #production 모드니까 프로덕션 서버로
+    ports:
+      - "9090:9000" # 호스트의 9090 포트를 컨테이너의 9000 포트와 연결
+    environment:
+      - PORT=9000        # 컨테이너 내부에서 앱이 9000번 포트를 사용하도록 설정
+      - NODE_ENV=production  # 앱의 모드를 'production'으로 설정
+```
+
+여기서 같은 이미지로부터 컨테이너를 두 개 만들고 localhost:포트로 다른 두 개의 모드 (개발자모드 / 프로덕션 모드)로 전환할 수 있게 만들었다.
+
+node.js를 설치하느라 한 세월을 소비하고 나서 드디어 컨테이너들을 돌릴 수 있었다.
+
+```bash
+ersatzvitamin9579@c4r5s1 env-mode-change % npm install express
+
+added 65 packages, and audited 66 packages in 1s
+
+22 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+ersatzvitamin9579@c4r5s1 env-mode-change % docker-compose up --build
+[+] Building 4.8s (14/14) FINISHED                                                          
+ => [internal] load local bake definitions                                             0.0s
+ => => reading from stdin 1.29kB                                                       0.0s
+ => [my-app-prod internal] load build definition from Dockerfile                       0.1s
+ => => transferring dockerfile: 498B                                                   0.0s
+ => [my-app-dev internal] load metadata for docker.io/library/node:18-alpine           0.9s
+ => [my-app-dev internal] load .dockerignore                                           0.1s
+ => => transferring context: 2B                                                        0.0s
+ => [my-app-prod 1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3  0.0s
+ => [my-app-dev internal] load build context                                           0.1s
+ => => transferring context: 2.18MB                                                    0.1s
+ => CACHED [my-app-prod 2/5] WORKDIR /usr/src/app                                      0.0s
+ => [my-app-prod 3/5] COPY package*.json ./                                            0.2s
+ => [my-app-dev 4/5] RUN npm install                                                   1.7s
+ => [my-app-prod 5/5] COPY . .                                                         0.3s
+ => [my-app-prod] exporting to image                                                   0.4s
+ => => exporting layers                                                                0.3s
+ => => writing image sha256:3eda7a6d5e99c9b4218caf97117274772be2a690aebd40e34a46bfe7b  0.0s
+ => => naming to docker.io/library/env-mode-change-my-app-prod                         0.0s
+ => [my-app-dev] exporting to image                                                    0.4s
+ => => exporting layers                                                                0.3s
+ => => writing image sha256:1b36fff31628eda7b2f19ceed16234f595d87ddc5ea57eb2750939f41  0.0s
+ => => naming to docker.io/library/env-mode-change-my-app-dev                          0.0s
+ => [my-app-dev] resolving provenance for metadata file                                0.0s
+ => [my-app-prod] resolving provenance for metadata file                               0.0s
+[+] Running 5/5
+ ✔ env-mode-change-my-app-dev       Built                                              0.0s 
+ ✔ env-mode-change-my-app-prod      Built                                              0.0s 
+ ✔ Network env-mode-change_default  Created                                            0.1s 
+ ✔ Container dev_server             Created                                            0.2s 
+ ✔ Container prod_server            Created                                            0.2s 
+Attaching to dev_server, prod_server
+dev_server  | 서버가 8000번 포트에서 실행 중입니다...
+prod_server  | 서버가 9000번 포트에서 실행 중입니다...
+
+```
+Orbstack GUI로는 이렇게 보인다.
+
+![Orbstack](prod_dev_orbstack.png)
+
+
+이 상황을 터미널으로, curl을 통해 확인을 해 보면...
+```bash
+ersatzvitamin9579@c4r5s1 ~ % curl localhost:8080
+안녕하세요! 이 서버는 현재 'development' 모드입니다.%                                ersatzvitamin9579@c4r5s1 ~ % curl localhost:9090
+안녕하세요! 이 서버는 현재 'production' 모드입니다.%                                 ersatzvitamin9579@c4r5s1 ~ % 
+
+```
+스크린샷도 첨부해보겠다. 포트에 따라서 development / production 문구가 잘 바뀌는 것을 확인할 수 있다.
+
+![localhost 8080](localhost_dev.png)
+
+![localhost 9090](localhost_prod.png)
+
+#### 여담
+
+docker images를 보면 docker-compose가 dev용이랑 prod 용으로 별도의 이미지를 build했음을 알 수 있다.
+
+```bash
+ersatzvitamin9579@c4r5s1 ~ % docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+env-mode-change-my-app-dev    latest    1b36fff31628   12 minutes ago   132MB
+env-mode-change-my-app-prod   latest    3eda7a6d5e99   12 minutes ago   132MB
+ersatzvitamin9579@c4r5s1 ~ % docker ps -a
+
+CONTAINER ID   IMAGE                         COMMAND                   CREATED          STATUS                       PORTS     NAMES
+f4f19274b1da   env-mode-change-my-app-prod   "docker-entrypoint.s…"   14 minutes ago   Exited (137) 2 minutes ago             prod_server
+c4e85e7f6efe   env-mode-change-my-app-dev    "docker-entrypoint.s…"   14 minutes ago   Exited (137) 2 minutes ago             dev_server
+ersatzvitamin9579@c4r5s1 ~ % 
+
+```
+
 
 학습 포인트: 설정과 코드의 분리
 
