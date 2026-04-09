@@ -684,7 +684,29 @@ ersatzvitamin9579@c4r5s1 codyssey2026 %
 ```
 이렇게 SSH 인증을 완료했다.
 
+하지만 남은 것이 있다. 아직 깃 레포지토리가 SSH가 아니고 https인 것이다.
+`git remote -v`를 눌러보면 확실하다.
+```bash
+ersatzvitamin9579@c4r5s1 codyssey2026 % git remote -v
+origin  https://github.com/I-nkamanda/codyssey2026.git (fetch)
+origin  https://github.com/I-nkamanda/codyssey2026.git (push)
+```
+이제 레포지토리를 SSH로 바꿔보자.
+```bash
+ersatzvitamin9579@c4r5s1 codyssey2026 % git remote set-url origin git@github.com:username/repo.git
 
+ersatzvitamin9579@c4r5s1 codyssey2026 % git remote -v
+origin  git@github.com:username/repo.git (fetch)
+origin  git@github.com:username/repo.git (push)
+```
+이 명령어를 통해서 remote url을 HTTPS에서 SSH로 바꿀 수 있다.
+origin이 바뀌었음을 확인할 수 있다.
+
+
+실습이 끝난 뒤에는 교육장 iMac에서 깔끔하게 SSH 흔적을 지워줘야 하는데, 
+그 때는 `rm -rf ~/.ssh/id_ed25519*` 명령어를 활용해 준다.
+
+[보너스 과제 완료]
 
 
 학습 포인트: 인증방식 차이와 보안 습관
