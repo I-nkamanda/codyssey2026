@@ -20,10 +20,13 @@ Common Commands:
   bake        Build from a file
   ㄴdocker image 다수를 한 번에 build 할 수 있는 명령어.
   pull        Download an image from a registry
-  ㄴ> 이미 있는 도커 이미지를 가져온다
+  ㄴ> 레지스트리에서 이미 있는 도커 이미지를 가져온다
   push        Upload an image to a registry
+  ㄴ> 내가 만든 이미지를 레지스트리로 push한다.
   images      List images
+  ㄴ> 사용된/설치된 docker 이미지의 리스트를 불러온다.
   login       Authenticate to a registry
+  ㄴ> docker
   logout      Log out from a registry
   search      Search Docker Hub for images
   version     Show the Docker version information

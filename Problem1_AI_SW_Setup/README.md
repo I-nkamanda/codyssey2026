@@ -32,7 +32,7 @@
 - [x] Docker Compose 멀티 컨테이너
 - [x] Docker Compose 운영 명령어 및 루틴
 - [x] 환경 변수 활용
-- [ ] Github SSH 키 설정
+- [x] Github SSH 키 설정
 
 ### Terminal 활용
 [Terminal 명령어 실습](./Phase_1_terminal/Problem_1_terminal.md)
