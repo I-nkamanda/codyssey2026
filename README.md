@@ -16,6 +16,16 @@
 - Git: 2.50.1 / 2.53.0
 
 
+## 디렉토리 구조
+이 저장소는 학습 흐름과 재현성을 기준으로 구성했다.
+
+- `Problem1_AI_SW_Setup/Phase_1~10`: 학습 단계를 순서대로 분리했다.
+- 각 Phase 폴더: 해당 주제의 실습 기록, 증거 스크린샷, 예제 파일을 함께 둬서 복습과 검증이 가능하게 했다.
+- Dockerfile/Compose 예제는 실습 문서와 같은 Phase 안에 두어, 문서와 실행 파일이 분리되지 않도록 했다.
+- 루트 `README.md`는 전체 목차, 각 Phase의 README/문서는 세부 실습 기록 역할을 맡는다.
+
+즉, 이 구조는 “주제별 분류”이면서 동시에 “학습 순서 기반 분류”다.
+
 ## 수행 항목 체크 리스트
 - [x] 터미널 기본 조작 및 풀더 구성
 - [x] 권한 변경 실습
@@ -42,6 +52,19 @@
 - [현재 위치 확인], [목록 확인(숨김파일포함)], [이동], [생성], [복사], [이동/이름변경] [삭제]
 - [파일 내용 확인], [빈 파일 생성]
 
+#### 절대 경로와 상대 경로의 선택 기준
+
+- 절대 경로:
+  - 현재 작업 위치와 무관하게 항상 같은 위치를 가리켜야 할 때 사용한다.
+  - 예: bind mount에서 경로 혼동을 줄이기 위해 `$(pwd)/bind-test:/data`처럼 사용
+
+- 상대 경로:
+  - 현재 프로젝트 루트를 기준으로 함께 이동하는 파일 구조일 때 사용한다.
+  - 예: 문서 링크 `./Phase_1_terminal/...`, Compose의 `./html:/usr/share/nginx/html`
+
+정리하면,
+재현성과 명확성이 중요할 때는 절대 경로,
+프로젝트 내부 이동성과 간결성이 중요할 때는 상대 경로를 선택한다.
 
 
 
@@ -49,7 +72,7 @@
 [권한 설정 및 변경](./Problem1_AI_SW_Setup/Phase_2_chmod/Problem_2_chmod_조작.md)
 
 
-### Docker
+### Docker 실습
 
 [Docker 설치](./Problem1_AI_SW_Setup/Phase_3_Docker_Install/Problem_3_Docker_설치_점검.md)
 
@@ -60,7 +83,7 @@
 
 
 
-### Dockerfile
+### Dockerfile 제작 실습
 
 
 [커스텀 Dockerfile 빌드](./Problem1_AI_SW_Setup/Phase_6_Dockerfile_Custom_Build/Problem_6_Dockefile_커스텀_이미지_제작.md)
@@ -77,10 +100,39 @@
 
 ![포트매핑2](/Problem1_AI_SW_Setup/PortMapping_2.png)
 
+#### 포트 매핑 실패 시 진단 순서
+
+예: `docker run -p 8080:80 ...` 실행 시 포트 충돌 발생
+
+1. 에러 메시지에서 어떤 호스트 포트가 충돌했는지 확인한다.
+2. `docker ps`로 같은 포트를 이미 사용하는 컨테이너가 있는지 본다.
+3. 호스트 프로세스도 확인한다.
+   - mac/linux 예: `lsof -i :8080`
+4. 이미 실행 중인 컨테이너라면 중지/삭제하거나 다른 호스트 포트로 바꾼다.
+5. 재실행 후 `docker ps`와 `curl localhost:포트`로 확인한다.
+
+즉, “충돌 포트 확인 → 점유 주체 확인 → 종료 또는 포트 변경 → 재검증” 순서로 진단한다.
+
+
 
 ### Docker Volume 영속성
 
 [Docker 볼륨 영속성](./Problem1_AI_SW_Setup/Phase_8_Docker_Volume_Continuity/Problem_8_도커_볼륨_영속성_검증.md)
+
+## 포트/볼륨 설정을 재현 가능하게 정리한 방식
+
+포트와 볼륨 설정은 두 방식으로 재현 가능하게 정리했다.
+
+1. 단발성 실습은 실행 명령 자체를 문서에 기록했다.
+   - 예: `docker run -p 8888:80 nginx`
+   - 예: `docker run -v my-volume:/data ubuntu bash`
+
+2. 반복 실행이 필요한 설정은 Dockerfile/Compose 파일로 문서화했다.
+   - 포트는 `ports:` 또는 `-p` 옵션으로 명시
+   - 볼륨은 `volumes:` 또는 `-v` 옵션으로 명시
+
+이렇게 하면 같은 명령 또는 같은 YAML 파일만으로 다른 환경에서도 동일하게 재실행할 수 있다.
+
 
 ### Git / Github Settings
 [깃과 깃허브 세팅](./Problem1_AI_SW_Setup/Phase_9_Git_and_Github_Settings/Problem_9_Git_설정_Github_연동.md)
